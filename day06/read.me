@@ -1,0 +1,101 @@
+# Day 6 – Snowflake SQL: CTAS & Set Operators
+
+## 📌 Overview
+
+On Day 6 of my **30-Day Snowflake SQL Challenge**, I practiced creating tables from existing queries and combining data from multiple tables using SQL Set Operators.
+
+## 🧠 Topics Covered
+
+* `CREATE TABLE AS SELECT (CTAS)`
+* Creating an empty table using `WHERE 1 = 2`
+* `UNION`
+* `UNION ALL`
+* `INTERSECT`
+* `MINUS`
+
+## 🗂️ SQL Concepts
+
+### 1. CREATE TABLE AS SELECT (CTAS)
+
+CTAS is used to create a new table using the result of a `SELECT` statement.
+
+```sql
+CREATE OR REPLACE TABLE STUDENTS_COPY AS
+SELECT *
+FROM STUDENTS;
+```
+
+### 2. Creating an Empty Table
+
+Using `WHERE 1 = 2` creates a table structure without copying any rows.
+
+```sql
+CREATE OR REPLACE TABLE STUDENTS_EMPTY AS
+SELECT *
+FROM STUDENTS
+WHERE 1 = 2;
+```
+
+### 3. UNION
+
+Combines results from two queries and removes duplicate values.
+
+```sql
+SELECT FACULTY FROM STUDENTS
+UNION
+SELECT FACULTY FROM STUDENTS_NEW;
+```
+
+### 4. UNION ALL
+
+Combines results while keeping duplicate values.
+
+```sql
+SELECT FACULTY FROM STUDENTS
+UNION ALL
+SELECT FACULTY FROM STUDENTS_NEW;
+```
+
+### 5. INTERSECT
+
+Returns values that exist in both query results.
+
+```sql
+SELECT FACULTY FROM STUDENTS
+INTERSECT
+SELECT FACULTY FROM STUDENTS_NEW;
+```
+
+### 6. MINUS
+
+Returns values that exist in the first query but not in the second query.
+
+```sql
+SELECT FACULTY FROM STUDENTS
+MINUS
+SELECT FACULTY FROM STUDENTS_NEW;
+```
+
+## 🎯 Key Learning
+
+This practice helped me understand how to:
+
+* Create tables from query results
+* Create empty tables with the same structure
+* Combine data from multiple queries
+* Identify common records
+* Find differences between datasets
+* Understand the difference between `UNION` and `UNION ALL`
+
+## 🛠️ Technology
+
+**Database:** Snowflake
+**Language:** SQL
+
+## 📅 Challenge Progress
+
+**Day 6 / 30 Days Completed ✅**
+
+Continuing to build my Snowflake SQL skills one day at a time.
+
+#Snowflake #SQL #DataEngineering #DataAnalytics #LearningSQL #30DayChallenge
