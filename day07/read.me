@@ -1,0 +1,123 @@
+# Day 7 — Snowflake SQL Challenge
+
+## 📌 Topics Covered
+
+Today I practiced the following Snowflake SQL concepts:
+
+* UNION
+* UNION ALL
+* ORDER BY
+* TRUNCATE TABLE
+* Column Aliases using AS
+* Combining values from multiple columns into a single column
+
+## 🧑‍💻 SQL Practice
+
+### 1. Create Schema and Table
+
+```sql
+CREATE OR REPLACE SCHEMA s11;
+
+USE SCHEMA s11;
+
+CREATE TABLE emp (
+    emp_name STRING,
+    phone_nr NUMBER,
+    office_nr NUMBER
+);
+```
+
+### 2. Insert Employee Data
+
+```sql
+INSERT INTO emp VALUES
+('vishwajeet', 1234, 5678),
+('neel', 6789, 6789);
+```
+
+### 3. UNION
+
+```sql
+SELECT emp_name, phone_nr AS contact_nr
+FROM emp
+
+UNION
+
+SELECT emp_name, office_nr AS contact_nr
+FROM emp
+
+ORDER BY emp_name DESC;
+```
+
+`UNION` combines the results of two queries and removes duplicate rows.
+
+### 4. TRUNCATE TABLE
+
+```sql
+TRUNCATE TABLE emp;
+```
+
+`TRUNCATE TABLE` removes all rows from the table while keeping the table structure.
+
+### 5. Insert New Data
+
+```sql
+INSERT INTO emp VALUES
+('sandeep', 123, 98609),
+('akshay', 456, 98706),
+('swapnil', 467, 98808);
+```
+
+### 6. UNION ALL
+
+```sql
+SELECT emp_name, phone_nr AS number
+FROM emp
+
+UNION ALL
+
+SELECT emp_name, office_nr AS number
+FROM emp;
+```
+
+`UNION ALL` combines the results of both queries and keeps duplicate rows.
+
+## 📊 Expected Output
+
+| EMP_NAME | NUMBER |
+| -------- | -----: |
+| sandeep  |    123 |
+| akshay   |    456 |
+| swapnil  |    467 |
+| sandeep  |  98609 |
+| akshay   |  98706 |
+| swapnil  |  98808 |
+
+## 🧠 Key Learnings
+
+### UNION
+
+Removes duplicate rows from the combined result.
+
+### UNION ALL
+
+Keeps all rows, including duplicates.
+
+### ORDER BY
+
+Used to sort the final query result.
+
+### TRUNCATE TABLE
+
+Removes all records while preserving the table structure.
+
+### AS
+
+Used to assign an alias to a column.
+
+## 🚀 Progress
+
+**30-Day Snowflake SQL Challenge — Day 7/30**
+
+Another day of hands-on Snowflake SQL practice completed.
+Continuing to build strong SQL fundamentals through consistent daily practice.
