@@ -1,0 +1,143 @@
+# Day 8 — Snowflake SQL Challenge
+
+## 📌 Topic: NULL Handling Functions
+
+Today I practiced handling `NULL` values in Snowflake SQL using:
+
+* `COALESCE()`
+* `NVL()`
+* `NVL2()`
+
+---
+
+## 1. COALESCE()
+
+`COALESCE()` returns the **first non-NULL value** from the given expressions.
+
+### Example
+
+```sql
+SELECT
+    id,
+    COALESCE(f_name, m_name, l_name) AS first_available_name
+FROM emp1;
+```
+
+### Example Result
+
+| ID | First Available Name |
+| -: | -------------------- |
+|  1 | sam                  |
+|  2 | todd                 |
+|  3 | sara                 |
+|  4 | ben                  |
+|  5 | james                |
+
+### Key Point
+
+```text
+COALESCE(value1, value2, value3)
+```
+
+It checks values from left to right and returns the first value that is not `NULL`.
+
+---
+
+## 2. NVL2()
+
+`NVL2()` checks whether a value is `NULL` or not.
+
+### Syntax
+
+```sql
+NVL2(expression, value_if_not_null, value_if_null)
+```
+
+### Example
+
+```sql
+SELECT
+    sr_no,
+    NVL2(
+        service_code,
+        service_code || '|1',
+        '1'
+    ) AS service_result
+FROM sss2;
+```
+
+### Logic
+
+* If `service_code` is NOT NULL → append `|1`
+* If `service_code` is NULL → return `1`
+
+### Example Result
+
+| SR_NO | SERVICE_CODE | SERVICE_RESULT |
+| ----: | ------------ | -------------- |
+|     1 | NULL         | 1              |
+|     2 | 3            | 3|1            |
+|     3 | 1|2          | 1|2|1          |
+|     4 | 5            | 5|1            |
+|     5 | 4            | 4|1            |
+|     6 | 2            | 2|1            |
+
+---
+
+## 3. NVL()
+
+`NVL()` replaces a `NULL` value with a specified value.
+
+### Example
+
+```sql
+SELECT
+    NVL(str, 'na') AS updated_value
+FROM emp1;
+```
+
+### Example Result
+
+| STR  | UPDATED_VALUE |
+| ---- | ------------- |
+| A    | A             |
+| B    | B             |
+| NULL | na            |
+| C    | C             |
+| NULL | na            |
+| D    | D             |
+
+---
+
+## 🧠 Functions Learned
+
+| Function     | Purpose                                                             |
+| ------------ | ------------------------------------------------------------------- |
+| `COALESCE()` | Returns the first non-NULL value                                    |
+| `NVL()`      | Replaces NULL with a specified value                                |
+| `NVL2()`     | Returns different values depending on whether an expression is NULL |
+
+---
+
+## 🎯 Day 8 Learning
+
+Today I learned how to:
+
+* Handle missing data using SQL
+* Find the first available value using `COALESCE()`
+* Replace NULL values using `NVL()`
+* Apply conditional NULL logic using `NVL2()`
+* Concatenate strings using `||`
+
+---
+
+## 🛠️ Technology
+
+* Snowflake
+* SQL
+
+## 📅 Challenge Progress
+
+**Day 8 / 30 Days Completed ✅**
+
+Continuing my journey to strengthen my Snowflake SQL and Data Engineering fundamentals.
