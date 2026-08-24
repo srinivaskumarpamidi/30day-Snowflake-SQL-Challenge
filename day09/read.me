@@ -1,0 +1,127 @@
+# Day 9 – SQL CASE, DECODE and SIGN Functions
+
+## 📌 Topics Covered
+
+Today I practiced conditional logic and custom sorting in Snowflake SQL.
+
+### 1. CASE Expression
+
+Used `CASE` to return different values based on conditions.
+
+```sql
+SELECT CASE
+           WHEN 1 = 2 THEN 'DATHA'
+           WHEN 1 = 3 THEN 'CHANDRA'
+           WHEN 1 = 4 THEN 'NARASIMHA'
+           WHEN 1 = 5 THEN 'RAVINDRA'
+           ELSE 'ARAVIND'
+       END AS NAME;
+```
+
+### 2. CASE with Salary Conditions
+
+Classified employees based on their salary.
+
+```sql
+SELECT name,
+       CASE
+           WHEN sal = 10000 THEN 'average'
+           WHEN sal < 10000 THEN 'low sal'
+           WHEN sal > 10000 THEN 'HI sal'
+       END AS sal_grade
+FROM emp;
+```
+
+### 3. UPDATE using CASE
+
+Updated salaries based on salary conditions.
+
+```sql
+UPDATE emp
+SET sal = CASE
+              WHEN sal < 10000 THEN sal + (sal * 1)
+              WHEN sal = 10000 THEN sal + (sal * 0.1)
+              ELSE sal
+          END;
+```
+
+### 4. Custom Sorting using CASE
+
+Used `CASE` inside `ORDER BY` to place specific countries first.
+
+```sql
+SELECT *
+FROM t1
+ORDER BY CASE
+             WHEN country_name = 'INDIA' THEN 0
+             WHEN country_name = 'AMERICA' THEN 1
+             ELSE 2
+         END,
+         country_name;
+```
+
+### 5. SIGN() Function
+
+Practiced `SIGN()` to determine whether a salary is greater than, equal to, or less than `10000`.
+
+```sql
+SIGN(sal - 10000)
+```
+
+It returns:
+
+* `1` → salary greater than 10000
+* `0` → salary equal to 10000
+* `-1` → salary less than 10000
+
+### 6. DECODE() with SIGN()
+
+Used `DECODE()` together with `SIGN()` to categorize salaries.
+
+```sql
+SELECT name,
+       sal,
+       DECODE(
+           SIGN(sal - 10000),
+           1, 'highsal',
+           0, 'mediumsal',
+          -1, 'lowsal'
+       ) AS sal_grade
+FROM emp;
+```
+
+### 7. UPDATE using DECODE and SIGN
+
+Updated salaries using `DECODE()` and `SIGN()`.
+
+```sql
+UPDATE emp
+SET sal = DECODE(
+              SIGN(sal - 10000),
+              1, sal + (0.1 * sal),
+              0, sal,
+             -1, sal + sal
+          );
+```
+
+## 📚 Key Learning
+
+Today I learned how to use:
+
+* `CASE`
+* `DECODE`
+* `SIGN`
+* Conditional salary classification
+* Conditional `UPDATE`
+* Custom sorting using `ORDER BY`
+* Combining `SIGN()` and `DECODE()`
+
+## 🛠️ Technology
+
+**Snowflake SQL**
+
+## 🚀 Progress
+
+**Day 9 of my SQL learning journey**
+
+Continuing to practice SQL concepts and improve my problem-solving skills.
