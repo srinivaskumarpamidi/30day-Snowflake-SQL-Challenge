@@ -1,0 +1,38 @@
+# Day 10 - SQL Aggregate Functions & COUNT()
+
+Today I practiced SQL aggregate functions, GROUP BY, and different behaviors of the COUNT() function with NULL values.
+
+## Topics Covered
+
+- Aggregate Functions
+- MAX()
+- MIN()
+- AVG()
+- ROUND()
+- SUM()
+- COUNT()
+- COUNT(*)
+- COUNT(1)
+- COUNT(column)
+- COUNT(DISTINCT column)
+- COUNT(NULL)
+- NULL comparison
+- GROUP BY
+- ORDER BY
+- Understanding NULL values
+- Aggregate vs Non-Aggregate Columns
+
+## Aggregate Functions
+
+Aggregate functions perform calculations on multiple rows and return a single result.
+
+Examples:
+
+```sql
+SELECT 
+    MAX(sal),
+    MIN(sal),
+    ROUND(AVG(sal), 2),
+    COUNT(*),
+    SUM(sal)
+FROM emp;
