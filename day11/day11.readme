@@ -1,0 +1,86 @@
+# 🚀 Day 11 - SQL Exam Practice | 30-Day Snowflake SQL Challenge
+
+## 📌 Overview
+
+Day 11 focused on solving a **35-question SQL Exam** using the `EMP` table.
+
+The questions covered SQL fundamentals, filtering, aggregate functions, grouping, HAVING, CASE expressions, and more advanced analytical queries.
+
+---
+
+## 🗂️ Table Used
+
+### EMP
+
+| Column | Description |
+|---|---|
+| EMPNO | Employee Number |
+| ENAME | Employee Name |
+| JOB | Job Role |
+| SAL | Salary |
+| DEPTNO | Department Number |
+| COMM | Commission |
+| HIREDATE | Hiring Date |
+
+---
+
+## 📚 Topics Covered
+
+### 1. Filtering Data
+
+- `WHERE`
+- `AND`
+- `IN`
+- `BETWEEN`
+- `IS NULL`
+
+### 2. Sorting Data
+
+- `ORDER BY`
+- `ASC`
+- `DESC`
+
+### 3. Aggregate Functions
+
+- `COUNT()`
+- `SUM()`
+- `AVG()`
+- `MAX()`
+- `MIN()`
+
+### 4. GROUP BY
+
+Practiced:
+
+- Department-wise salary analysis
+- Job-wise salary analysis
+- Department-wise employee count
+- Department-wise commission analysis
+
+### 5. HAVING
+
+Used `HAVING` to filter grouped results based on:
+
+- Total salary
+- Average salary
+- Employee count
+- Maximum salary
+- Minimum salary
+- Total commission
+
+### 6. CASE Expressions
+
+Created categories based on:
+
+- Salary
+- Job
+- Department
+
+Example:
+
+```sql
+CASE
+    WHEN SAL >= 8000 THEN 'HIGH'
+    WHEN SAL >= 5000 THEN 'MEDIUM'
+    ELSE 'LOW'
+END
